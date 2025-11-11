@@ -1,0 +1,267 @@
+/* --- Import Google Font --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* --- CSS Variables (Color Palette & Sizing) --- */
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+    --dark-text: #343a40;
+    --light-text: #6c757d;
+    --border-color: #dee2e6;
+    --success-color: #28a745;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --card-hover-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    --transition-speed: 0.3s ease;
+}
+
+/* --- Global Reset & Body --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h2, h3 {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--dark-text);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+i {
+    margin-right: 8px; /* Spacing for all icons */
+}
+
+/* --- Header --- */
+header {
+    background: var(--white);
+    color: var(--dark-text);
+    padding: 1.25rem 2.5rem;
+    text-align: center;
+    font-size: 1.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Main Container --- */
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 30px auto;
+}
+
+/* --- Generic Card --- */
+.card {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: all var(--transition-speed);
+}
+
+/* --- Login Page --- */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--light-bg);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+}
+
+.login-card .sub-text {
+    color: var(--light-text);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+/* --- Buttons & Inputs --- */
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: all var(--transition-speed);
+}
+
+input[type="password"]:focus,
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+button, .primary-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
+    border-radius: 8px;
+    border: none;
+    background: var(--primary-color);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    text-decoration: none; /* For <a> tags */
+    display: inline-block; /* For <a> tags */
+    text-align: center;
+}
+
+button:hover, .primary-btn:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.primary-btn.small {
+    width: auto;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    margin-top: 0;
+}
+
+/* --- Upload Section --- */
+.upload-section {
+    margin-bottom: 2.5rem;
+}
+
+#uploadForm {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Hide default file input */
+input[type="file"] {
+    display: none;
+}
+
+/* Custom file input label */
+.file-upload-label {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #f1f3f5;
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    color: var(--light-text);
+    font-weight: 500;
+}
+
+.file-upload-label:hover {
+    background: #e9ecef;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.file-name-display {
+    font-style: italic;
+    color: var(--light-text);
+    margin-left: 10px;
+}
+
+/* Make upload button fit content */
+#uploadForm button {
+    width: auto;
+    margin-left: auto; /* Pushes button to the right */
+}
+
+/* --- Progress Bar --- */
+#progress {
+    width: 100%;
+    height: 12px;
+    background: var(--border-color);
+    margin-top: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    display: none; /* Hide until upload starts */
+}
+
+#progress span {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: var(--success-color);
+    border-radius: 6px;
+    transition: width 0.4s ease;
+}
+
+/* --- File List (Responsive Grid) --- */
+.file-list {
+    display: grid;
+    /* This grid is responsive: 
+       - It creates as many columns as fit (auto-fill)
+       - Each column is a minimum of 300px
+       - Columns share remaining space (1fr)
+    */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.file-card {
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all var(--transition-speed);
+}
+
+.file-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-hover-shadow);
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    overflow: hidden; /* Important for long file names */
+}
+
+.file-info .file-icon {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-right: 15px;
+}
+
+.file-name {
+    font-weight: 500;
+    color: var(--dark-text);
+    /* Prevents long names from breaking layout */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-card .primary-btn {
+    flex-shrink: 0; /* Prevents button from shrinking */
+    margin-left: 15px;
+}

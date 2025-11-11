@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Sharing</title>
+    <link rel="stylesheet" href="/static/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+</head>
+<body>
+
+<header>
+    <h2><i class="fa-solid fa-server"></i> Local Network File Sharing</h2>
+</header>
+
+<div class="container">
+
+    <section class="card upload-section">
+        <h3><i class="fa-solid fa-upload"></i> Upload a File</h3>
+        <form id="uploadForm">
+            <input type="file" name="file" id="fileInput" required>
+            
+            <label for="fileInput" class="file-upload-label" id="fileLabel">
+                <i class="fa-solid fa-paperclip"></i> Choose a file...
+            </label>
+            
+            <span id="fileNameDisplay" class="file-name-display"></span>
+            
+            <button class="primary-btn"><i class="fa-solid fa-cloud-arrow-up"></i> Upload</button>
+        </form>
+        <div id="progress"><span></span></div>
+    </section>
+
+    <h3><i class="fa-solid fa-folder-open"></i> Available Files</h3>
+    <div class="file-list">
+        
+        {% for f in files %}
+        <div class="file-card">
+            <div class="file-info">
+                <i class="fa-solid fa-file file-icon"></i>
+                <span class="file-name" title="{{ f }}">{{ f }}</span>
+            </div>
+            <a href="/download/{{ f }}" class="primary-btn small">
+                <i class="fa-solid fa-download"></i> Download
+            </a>
+        </div>
+        {% endfor %}
+        
+    </div>
+
+</div>
+
+<script>
+// Select all the new elements
+const uploadForm = document.getElementById("uploadForm");
+const fileInput = document.getElementById("fileInput");
+const fileLabel = document.getElementById("fileLabel");
+const fileNameDisplay = document.getElementById("fileNameDisplay");
+const progressDiv = document.getElementById("progress");
+const progressSpan = document.querySelector("#progress span");
+
+// Update the label text when a file is chosen
+fileInput.onchange = function() {
+    if (fileInput.files.length > 0) {
+        // Show the file name
+        fileNameDisplay.textContent = fileInput.files[0].name;
+        // You could also hide the "Choose a file" label if you want
+        // fileLabel.style.display = "none";
+    }
+};
+
+uploadForm.onsubmit = function(e) {
+    e.preventDefault();
+    let file = fileInput.files[0];
+    if (!file) return; // Stop if no file is selected
+
+    let data = new FormData();
+    data.append("file", file);
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "/upload", true);
+
+    // Show the progress bar
+    progressDiv.style.display = "block";
+
+    xhr.upload.onprogress = function(e) {
+        if (e.lengthComputable) {
+            let percentComplete = (e.loaded / e.total) * 100;
+            progressSpan.style.width = percentComplete + "%";
+        }
+    };
+
+    xhr.onload = function() {
+        // Reload to see the new file
+        location.reload(); 
+    };
+
+    xhr.onerror = function() {
+        alert("Upload failed. Please try again.");
+        // Hide progress bar and reload on failure
+        progressDiv.style.display = "none";
+        location.reload();
+    };
+    
+    xhr.send(data);
+};
+</script>
+
+</body>
+</html>
