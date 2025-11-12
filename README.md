@@ -1,15 +1,25 @@
 Network File Sharing using Flask
 
 Group - Infinity
+
 Vishal Kumar
+
 Roll No: 2023011085
-B. Tech (Computer Science & Engineering), 5th Semester 
+
+B. Tech (Computer Science & Engineering), 5th Semester
+
 Email: vkumar26062003@gmail.com | Phone: +91 7800982247
+
 Tarkeshvar Mani Yadav
+
 Roll No: 2023011078
+
 B. Tech (Computer Science & Engineering), 5th Semester Email: tarkeshvarmani@gmail.com | Phone: +91 7880626736
+
 Shashwat Srivastava
+
 Roll No: 2023021159
+
 B. Tech (Computer Science & Engineering), 5th Semester Email: shashwatwrites@gmail.com | Phone: +91 9219325153
 
 
