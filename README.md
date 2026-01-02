@@ -1,206 +1,136 @@
-Network File Sharing using Flask
+Network File Sharing System Using Flask Framework
+Issue: 30 | Nov 2025
 
-Group - Infinity
+AUTHORS
+Vishal Kumar¹-2023011085, Tarkeshvar Mani Yadav²-2023011078, Shashwat Srivastava³-2023022159
+¹²³Undergraduate Students, Department of Computer Science & Engineering,
+Madan Mohan Malaviya University of Technology, Gorakhpur, Uttar Pradesh, India.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Vishal Kumar
-
-Roll No: 2023011085
-
-B. Tech (Computer Science & Engineering), 5th Semester
-
-Email: vkumar26062003@gmail.com | Phone: +91 7800982247
-
-Tarkeshvar Mani Yadav
-
-Roll No: 2023011078
-
-B. Tech (Computer Science & Engineering), 5th Semester Email: tarkeshvarmani@gmail.com | Phone: +91 7880626736
-
-Shashwat Srivastava
-
-Roll No: 2023021159
-
-B. Tech (Computer Science & Engineering), 5th Semester Email: shashwatwrites@gmail.com | Phone: +91 9219325153
+ABSTRACT - File sharing is an imperative aspect of contemporary computer networks that enables data exchange
+between various devices. The existing file sharing systems like FTP and SMB entail complicated settings and the use of
+servers. With the emergence of local area networks and the popularity of web platforms, the demand for a simple, safe,
+and transportable file sharing technique has increased.
+In this paper, the design and development of the Network File Sharing System using the Flask framework is presented.
+Using this system, it is possible to upload and download files over the local network using the web browser. In this
+proposed system, the architecture utilized is client-server. The server is denoted by the Flask framework, and the client is
+the general browser. Password security is incorporated to limit unauthorized access. In this proposed design, the HTTP
+and TCP protocols are used.
+This proposed solution is easy to implement, doesn’t require the use of a database, and is practical to implement in
+academic labs, classrooms, or small networks.
+Key Words: File Sharing, Flask, Client Server Architecture, HTTP, Local Area Network, Web Application
 
 
-🔷 1. Abstract
+1. INTRODUCTION
+Recently, the flow of electronic data has increased substantially between networks owing to the advent of computers
+and the use of local area networks. The exchange of files has an important place in teamwork and an educational setup.
+The traditional technique for exchanging files between networks includes the use of FTP and SMB. However, the existing
+technology has an intricate setup and overhead.
+Lightweight frameworks for the web are improving, and as a result, filesharing systems via the web are gaining popularity.
+Since Flask is a micro framework for the web developed using the Python language, it is simple, flexible, and easy to
+implement. The filesharing system via the web cuts the need for a special client application as files are accessible via the
+browser.
+In this research paper, we shall discuss the development of a file sharing application on a network using the flask
+framework, which shall be able to work on a local area network, possessing the capabilities for login, uploading, and
+downloading files.
 
-In the modern digital world, file sharing plays a vital role in communication and data exchange. The Network File Sharing using Flask project is a small-scale implementation of a local file-sharing system that allows users to upload and download files easily through a web interface. This system is designed using the Flask web framework in Python and leverages HTTP and TCP protocols for reliable and secure data transfer.
 
-The application allows users to:
-Access a login-protected web interface.
-Upload files from their system to the server.
-Download any available files hosted by the server.
-This project demonstrates the working of a client-server model, where the Flask server acts as the file provider and the user’s browser acts as the client. It serves as a simplified yet practical example of how file transfer happens across networks securely.
+3. METHODOLOGY
+   
+2.1 Design Approach
+The system is proposed using the client-server concept. The backend server is composed of the flask app acting as the
+server in charge of storing files, user authentication, and the transfer of files. The client uses a web browser
+communicating with the server using HTTP requests.
+The project follows agile development techniques to enable incremental development and testing of functionalities such
+as authentication modules, upload modules, as well as download modules.
 
-🔷 2. Objective
+2.2 System Architecture
+The architecture for the proposed system can be broken down into the following components:
+• Flask Server, where routing, auth, upload, and download are performed.
+• Client (Web Browser): It is the user interface used to access shared files.
+• File Directory: This stores the uploaded files on the server side.
+• Network Layer: TCP/IP and HTTP protocol checklist Used to transmit data.
+The IP address and port on which the server listens (the default is 5000) are based on client requests.
 
-The main objectives of this project are:
-To design a simple and secure local file-sharing system using Flask.
-To implement upload and download functionality within a web-based interface.
-To apply password protection for restricting unauthorized users.
-To understand the use of network communication protocols (HTTP and TCP).
-To demonstrate client-server communication using a lightweight Python web framework.
+2.3 Working Principle
+The sequence of the system's working is thereby performed as follows:
+1. The Flask server is started on a local machine or LAN.
+2. Accessing the application: The user has to access the server IP and port using a browser.
+3. Password: It asks the user to enter a password for authentication.
+4. The dashboard allows viewing of all available files upon successful authentication.
+5. A user can upload new files to the server.
+6. Users can download existing files from the server.
+7. All file transfers occur over HTTP using TCP for reliable delivery.
 
-🔷 3. Introduction
+   
+3. IMPLEMENTATION DETAILS
+   
+3.1 Authentication Module
+A basic password-based network authentication mechanism is employed to guarantee authorized access. The user needs
+to enter the valid password to get access to operations involving files. Unauthorized access prevents access to the files.
 
-File sharing is one of the most common operations in computer networks. Traditional systems use FTP (File Transfer Protocol) or SMB (Server Message Block) for sharing data. However, this project uses Flask to create a custom file-sharing system that runs locally or over a LAN network.
+3.2 File Upload Module
+The upload module is where users can pick their file from their computer and then upload it to the server. The file is
+uploaded using HTTP posts, and it is received in a specific directory on the server.
 
-Users can:
+3.3 File Download Module
+The download module is responsible for listing all the files hosted on the server. When the user clicks on the file, it is
+sent from the server as an attachment for download by the client.
 
-Open a local web address (like http://127.0.0.1:5000)
-Enter a secure password (e.g., 12345).
-View the list of available files.
-Upload or download files with a single click.
-The system can run entirely on one PC or within the same Wi-Fi network — making it a portable and easy-to-demonstrate solution for classroom or lab submissions.
 
-🔷 4. Tools and Technologies Used
+5. TOOL AND TECHNOLOGY USED
+• Python 3.x Programming Language for Background/Server
+• Flask Framework: Lightweight web framework for building servers
+• Name: Flask Framework
+• HTML/CSS - Frontend User Interface Design
+• HTTP Protocol - File transfer & communication
+• TCP/IP: Reliable data transfer
+• Web Browser: Interaction on the Client-side
 
-🧰 Software & Libraries
 
-Tool	Purpose
-Python 3.x	Programming language used to implement backend logic.
-Flask	Lightweight web framework for building the server and handling HTTP requests.
-HTML / CSS / JavaScript	Frontend technologies to design the web interface.
-FPDF (optional)	Used to generate automated project reports.
-Browser (Chrome/Edge)	Acts as a client to interact with the Flask server.
-🖧 Protocols Used
-Protocol	Description
-HTTP (HyperText Transfer Protocol)	Used for transferring files and web page data between the server and client.
-TCP (Transmission Control Protocol)	Ensures reliable delivery of packets and data transfer.
-Socket Layer	Flask internally uses sockets to handle communication between client and server.
+6. FEATURES OF THE PROPOSED SYSTEM
+1. Password-protected access
+2. Upload and download of files via web page
+3. Light weight and easy to deploy
+4. No database dependency.
+5. LAN-based file sharing support
 
-🔷 5. Working Principle
 
-The project works on the Client-Server Architecture.
-The Server is created using Flask and hosts all files inside a directory (files/).
-The Client (browser) connects to the server using an IP address and a port.
-Flask listens on the default port 5000 and provides two main routes:
+6. FLOW OF OPERATION
+1. Run Flask server
+2. User opens browser, types in server URL
+3. Authentication check
+4. View dashboard
+5. Upload or download file
+6. File transfer completed successfully
+7. Kill session.
 
-/ → for the homepage and file listing.
-/download/<filename> → to download selected files.
-/upload → to upload files.
-Before accessing these routes, the user must log in using the password “12345”.
+   
+7. RESULTS AND OBSERVATIONS
+The implemented system will be able to facilitate the sharing of files over a local network, with very minimal
+configurations. The testing of uploading and downloading different file formats and sizes was performed. The system
+performed reliably on a LAN environment and required few resources as compared to traditional file sharing systems.
 
-Once authenticated, users can perform file operations securely.
 
-🔷 6. Features
+9. CONCLUSION
+This paper presented a Network File Sharing System using Flask, showing the web technologies that can be applied to
+local file transfer effectively. The system consequently simplifies file sharing by eliminating the use of any specialized
+software or complex configurations. It offers secure, efficient, and user-friendly file transfer capabilities by using some
+very basic concepts of networking.
+The system would be quite applicable at educational institutions and small organizations. Some of the further
+enhancements may be in regards to encryption, user role management, and cloud deployment, where scalability can be
+extended quite effectively.
 
-1-Password Protected Access
-Only authorized users can log in with a correct password (12345) to access the dashboard.
 
-2-File Upload Functionality
-Users can upload files directly from their browser, and the Flask server saves them in the files/ folder.
+11. FUTURE SCOPE
+• Encrypting files for secure transfers
+• Access control based on the user
+• Integration of databases
+• Deployment based on cloud
+• Mobile compatibility
 
-3-File Download Option
-All stored files are listed on the page with download links. A user can download any file with one click.
-
-4-Dynamic UI (User Interface)
-The interface is built using HTML and CSS to provide a professional look with buttons, cards, and layout.
-
-5-Local Network Access
-When hosted on LAN (host="0.0.0.0"), other devices connected to the same Wi-Fi can also access the shared files via the server’s IP.
-
-6-Easy to Deploy & Run
-No database or external dependencies are needed. It runs with a single Python script.
-
-🔷 7. Flow of Operation
-
-🔹 Step-by-Step Process
-
-Start the Flask Server
-Run python app.py
-The Flask application starts and listens for connections.
-User Opens the Webpage
-Access through http://127.0.0.1:5000 or local IP address.
-
-Login Authentication
-The user enters the password.
-If password = 12345, access is granted.
-If incorrect, error message is shown.
-
-Dashboard Display
-The home page lists all the files available for download.
-The upload form is also displayed to send new files.
-Upload Process
-The user selects a file and submits.
-Flask receives the file via POST request and saves it in the files/ folder.
-Download Process
-When a user clicks a file name, Flask sends that file to the browser as an attachment.
-End
-
-File transfer completes successfully and the session ends.
-
-🔷 8. Flowchart (Description)
-Start
-  ↓
-User Opens Web App
-  ↓
-Enter Password
-  ↓
- ┌──────────────┐
- │ Password OK? │
- └──────┬───────┘
-        │Yes
-        ↓
-Show Dashboard → Upload / Download
-        ↓
-Perform Action (File Transfer)
-        ↓
-Success Message
-        ↓
-End
-
-🔷 9. Advantages
-
-✅ Simple and lightweight system for LAN file sharing
-✅ Password-protected for basic security
-✅ Works on any browser and platform
-✅ Requires no external software like FTP servers
-✅ Easy to extend and customize
-
-🔷 10. Limitations
-
-❌ Not suitable for large-scale or internet-widesharing.
-❌ No user account management system.
-❌ Files are not encrypted during transfer.
-❌ Works only on devices in the same network (unless deployed online).
-
-🔷 11. Future Scope
-
-Add user authentication with multiple accounts.
-Implement encryption (SSL / HTTPS) for secure transfer.
-Add file size limits and activity logs.
-Deploy on cloud servers (Heroku, Render, or AWS) for remote access.
-Build a database integration (SQLite / MySQL) for storing user and file info.
-
-🔷 12. Conclusion
-
-The Network File Sharing using Flask project successfully demonstrates how local file sharing can be achieved using Python and basic web technologies. It combines the simplicity of Flask with the practicality of HTTP-based file transfer.
-This project is an excellent demonstration of:
-Client-Server Architecture
-Network Communication
-Web-based File Management
-
-It provides a good foundation for understanding how file sharing systems like Google Drive or Dropbox work at a smaller scale. With future improvements, it can evolve into a secure and full-fledged cloud file sharing system.
-
-🔷 13. References
-
-Flask Official Documentation – https://flask.palletsprojects.com
-Python Socket Programming Guide – GeeksforGeeks
-HTTP and TCP Protocol Notes – Computer Networking Tutorials
-
-Group - Infinity
-
-Vishal Kumar
-Roll No: 2023011085
-B. Tech (Computer Science & Engineering), 5th Semester 
-Email: vkumar26062003@gmail.com | Phone: +91 7800982247
-
-Tarkeshvar Mani Yadav
-Roll No: 2023011078
-B. Tech (Computer Science & Engineering), 5th Semester Email: tarkeshvarmani@gmail.com | Phone: +91 7880626736
-
-Shashwat Srivastava
-Roll No: 2023021159
-B. Tech (Computer Science & Engineering), 5th Semester Email: shashwatwrites@gmail.com | Phone: +91 9219325153
+13. REFERENCES
+1. Flask Official Documentation
+2. Python Networking Documentation
+3. Computer Networking Textbooks
+4. HTTP and TCP/IP Protocol Standards.
