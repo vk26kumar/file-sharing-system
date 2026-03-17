@@ -1,10 +1,4 @@
 Network File Sharing System Using Flask Framework
-Issue: 30 | Nov 2025
-
-AUTHORS
-Vishal Kumar¹-2023011085, Tarkeshvar Mani Yadav²-2023011078, Shashwat Srivastava³-2023022159
-¹²³Undergraduate Students, Department of Computer Science & Engineering,
-Madan Mohan Malaviya University of Technology, Gorakhpur, Uttar Pradesh, India.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ABSTRACT - File sharing is an imperative aspect of contemporary computer networks that enables data exchange
